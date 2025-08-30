@@ -1,0 +1,419 @@
+// import MobileInput from "@/components/UiComponent/FormComponents/MobileInput";
+// import TextInput from "@/components/UiComponent/FormComponents/TextInput";
+// import Modal from "@/components/UiComponent/ModalComponent/Modal";
+// import { AllProductsList } from "@/Utils/ProductList";
+// import { useState } from "react";
+
+// export default function SampleRequestForm({ closeModal }) {
+//   // Form state
+//   const [formData, setFormData] = useState({
+//     name: '',
+//     businessName: '',
+//     email: '',
+//     mobile: '',
+//     website: '',
+//     address: '',
+//     message: '',
+//     selectedProducts: {},
+//   });
+  
+//   // Validation errors state
+//   const [errors, setErrors] = useState({
+//     name: '',
+//     businessName: '',
+//     email: '',
+//     mobile: '',
+//     website: '',
+//     address: ''
+//   });
+  
+//   // Success state
+//   const [isSubmitted, setIsSubmitted] = useState(false);
+
+//   // Handle form input changes
+//   const handleInputChange = (e) => {
+//     const { name, value } = e.target;
+    
+//     // Apply regex validation based on field type
+//     let isValid = true;
+//     let errorMessage = '';
+    
+//     switch(name) {
+//       case 'name':
+//         // Only allow letters and spaces
+//         isValid = /^[a-zA-Z\s]*$/.test(value);
+//         errorMessage = isValid ? '' : 'Name should only contain letters and spaces';
+//         break;
+//       case 'email':
+//         // Basic email validation
+//         isValid = value === '' || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+//         errorMessage = isValid ? '' : 'Please enter a valid email address';
+//         break;
+//       case 'mobile':
+//         // Allow only numbers and limit to 10 digits
+//         isValid = /^\d{0,10}$/.test(value);
+//         errorMessage = isValid ? '' : 'Mobile number should be numeric and not exceed 10 digits';
+//         break;
+//       case 'website':
+//         // Website URL validation
+//         isValid = value === '' || /^(http:\/\/|https:\/\/)?[a-zA-Z0-9]+([-.]{1}[a-zA-Z0-9]+)*\.[a-zA-Z]{2,}(:[0-9]{1,5})?(\/.*)?$/.test(value);
+//         errorMessage = isValid ? '' : 'Please enter a valid website URL';
+//         break;
+//       default:
+//         isValid = true;
+//     }
+    
+//     if (isValid) {
+//       setFormData(prev => ({
+//         ...prev,
+//         [name]: value
+//       }));
+      
+//       // Clear error when field is edited and valid
+//       if (errors[name]) {
+//         setErrors(prev => ({
+//           ...prev,
+//           [name]: ''
+//         }));
+//       }
+//     } else {
+//       // Set error message
+//       setErrors(prev => ({
+//         ...prev,
+//         [name]: errorMessage
+//       }));
+//     }
+//   };
+
+
+//   // Handle product selection
+//   const handleProductSelection = (productId, checked) => {
+//     setFormData(prev => {
+//       const updatedProducts = { ...prev.selectedProducts };
+
+//       if (checked) {
+//         updatedProducts[productId] = true;
+//         // Clear product selection error if at least one product is selected
+//         setProductSelectionError('');
+//       } else {
+//         delete updatedProducts[productId];
+//         // Check if there are no products selected after deletion
+//         if (Object.keys(updatedProducts).length === 0) {
+//           setProductSelectionError('Please select at least one product');
+//         }
+//       }
+
+//       return {
+//         ...prev,
+//         selectedProducts: updatedProducts
+//       };
+//     });
+//   };
+
+//   // State for product selection error
+//   const [productSelectionError, setProductSelectionError] = useState('');
+  
+//   // Validate form data
+//   const validateForm = () => {
+//     let valid = true;
+//     const newErrors = {
+//       name: '',
+//       businessName: '',
+//       email: '',
+//       mobile: '',
+//       website: '',
+//       address: ''
+//     };
+    
+//     // Name validation
+//     if (!formData.name) {
+//       newErrors.name = 'Name is required';
+//       valid = false;
+//     }
+    
+//     // Business name validation
+//     if (!formData.businessName) {
+//       newErrors.businessName = 'Business name is required';
+//       valid = false;
+//     }
+    
+//     // Email validation
+//     if (!formData.email) {
+//       newErrors.email = 'Email is required';
+//       valid = false;
+//     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+//       newErrors.email = 'Email is invalid';
+//       valid = false;
+//     }
+    
+//     // Mobile validation
+//     if (!formData.mobile) {
+//       newErrors.mobile = 'Mobile number is required';
+//       valid = false;
+//     }
+    
+//     // Website validation
+//     if (!formData.website) {
+//       newErrors.website = 'Website is required';
+//       valid = false;
+//     } else if (!/^(http:\/\/|https:\/\/)?[a-zA-Z0-9]+([-.]{1}[a-zA-Z0-9]+)*\.[a-zA-Z]{2,}(:[0-9]{1,5})?(\/.*)?$/.test(formData.website)) {
+//       newErrors.website = 'Website URL is invalid';
+//       valid = false;
+//     }
+    
+//     // Address validation
+//     if (!formData.address) {
+//       newErrors.address = 'Address is required';
+//       valid = false;
+//     }
+    
+//     // Product selection validation
+//     const selectedProductCount = Object.keys(formData.selectedProducts).length;
+//     if (selectedProductCount === 0) {
+//       setProductSelectionError('Please select at least one product');
+//       valid = false;
+//     } else {
+//       setProductSelectionError('');
+//     }
+    
+//     setErrors(newErrors);
+//     return valid;
+//   };
+
+//   // Handle form submission
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+
+//     // Validate form before submission
+//     if (!validateForm()) {
+//       console.log('Form validation failed');
+//       return;
+//     }
+
+//     // Get selected product names
+//     const selectedProductIds = Object.keys(formData.selectedProducts);
+//     const selectedItems = [];
+
+//     AllProductsList.forEach(category => {
+//       category.products.forEach(product => {
+//         if (selectedProductIds.includes(product.id)) {
+//           selectedItems.push(`${product.name} (${category.categoryName})`);
+//         }
+//       });
+//     });
+
+//     // Prepare data for submission
+//     const submissionData = {
+//       name: formData.name,
+//       businessName: formData.businessName,
+//       email: formData.email,
+//       mobile: formData.mobile,
+//       website: formData.website,
+//       address: formData.address,
+//       message: formData.message,
+//       selectedProducts: selectedItems
+//     };
+
+//     console.log('Sample Request Form submission:', submissionData);
+    
+//     // Show success message
+//     setIsSubmitted(true);
+    
+//     // Reset form after 3 seconds and close modal
+//     setTimeout(() => {
+//       setFormData({
+//         name: '',
+//         businessName: '',
+//         email: '',
+//         mobile: '',
+//         website: '',
+//         address: '',
+//         message: '',
+//         selectedProducts: {},
+//       });
+//       closeModal();
+//     }, 3000);
+
+//     // Reset checkboxes
+//     document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+//       checkbox.checked = false;
+//     });
+//   };
+
+//   return (
+//     <Modal closeModal={closeModal} headerText="Request a Sample">
+//       <div className="p-6">
+//         <div className="min-h-screen bg-amber-50">
+//           <div id="sample-request-form" className="container mx-auto px-4 py-12">
+//             {isSubmitted ? (
+//               <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-md overflow-hidden p-8 text-center">
+//                 <div className="flex flex-col items-center justify-center">
+//                   <div className="bg-green-100 rounded-full p-4 mb-4">
+//                     <svg className="w-16 h-16 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+//                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+//                     </svg>
+//                   </div>
+//                   <h2 className="text-2xl font-bold text-gray-800 mb-2">Sample Request Submitted!</h2>
+//                   <p className="text-gray-600 mb-6">Thank you for your interest in our products. We&apos;ll get back to you within 24 hours.</p>
+//                 </div>
+//               </div>
+//             ) : (
+//               <>
+//                 <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-md overflow-hidden">
+//                   <div className="bg-amber-600 py-4 px-6">
+//                     <h1 className="text-2xl font-bold text-white">Product Sample Request</h1>
+//                     <p className="text-amber-100">Select products from our categories to request samples</p>
+//                   </div>
+
+//                   <form onSubmit={handleSubmit} className="p-6">
+//                     {/* Contact Information */}
+//                     <div className="mb-8">
+//                       <h3 className="text-xl font-semibold text-amber-800 mb-4 border-b pb-2">Company Information</h3>
+
+//                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+//                     <TextInput
+//                       label="Name *"
+//                       name="name"
+//                       value={formData.name}
+//                       onChange={handleInputChange}
+//                       placeholder="John Doe"
+//                       type="text"
+//                       error={errors.name}
+//                       validateRegex={/^[a-zA-Z\s]+$/}
+//                     />
+            
+//                     <TextInput
+//                       label="Business Name *"
+//                       name="businessName"
+//                       value={formData.businessName}
+//                       onChange={handleInputChange}
+//                       placeholder="Your Business Name"
+//                       type="text"
+//                       error={errors.businessName}
+                    
+//                     />
+              
+//                     <TextInput
+//                       label="Email Address *"
+//                       name="email"
+//                       value={formData.email}
+//                       onChange={handleInputChange}
+//                       placeholder="your@email.com"
+//                       type="email"
+//                       error={errors.email}
+//                     />
+
+//                   <MobileInput
+//                     label="Mobile Number *"
+//                     name="mobile"
+//                     value={formData.mobile}
+//                     onChange={handleInputChange}
+//                     placeholder="+1 123-456-7890"
+//                     error={errors.mobile}
+//                   />
+               
+//                     <TextInput
+//                       label="Website *"
+//                       name="website"
+//                       value={formData.website}
+//                       onChange={handleInputChange}
+//                       placeholder="www.yourwebsite.com"
+//                       type="text"
+//                       error={errors.website}
+//                       validateRegex={/^(http:\/\/|https:\/\/)?[a-zA-Z0-9]+([-.]{1}[a-zA-Z0-9]+)*\.[a-zA-Z]{2,}(:[0-9]{1,5})?(\/.*)?$/}
+//                     />
+
+//                     <TextInput
+//                       label="Address *"
+//                       name="address"
+//                       value={formData.address}
+//                       onChange={handleInputChange}
+//                       placeholder="123 Main St, City, Country"
+//                       type="text"
+//                       error={errors.address}
+//                     />
+//                   </div>
+//                 </div>
+
+//                 {/* Product Selection */}
+//                 <div className="mb-8">
+//                   <h3 className="text-xl font-semibold text-amber-800 mb-4 border-b pb-2">Select Products for Sample</h3>
+//                   <p className="text-sm text-gray-600 mb-6">Choose products you&apos;re interested in sampling:</p>
+//                   {productSelectionError && <p className="text-red-500 text-sm mb-2">{productSelectionError}</p>}
+
+//                   <div className="space-y-6">
+//                     {AllProductsList.map(category => (
+//                       <div key={category.id} className="border border-amber-200 rounded-lg p-5 bg-amber-50">
+//                         <h4 className="font-medium text-lg text-amber-800 mb-4 flex items-center">
+//                           <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+//                             <path fillRule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z" clipRule="evenodd" />
+//                           </svg>
+//                           {category.categoryName}
+//                         </h4>
+//                         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+//                           {category.products.map(product => (
+//                             <div key={product.id} className="flex items-center bg-white p-3 rounded border border-amber-100">
+//                               <input
+//                                 id={`product-${product.id}`}
+//                                 type="checkbox"
+//                                 onChange={(e) => handleProductSelection(product.id, e.target.checked)}
+//                                 className="h-4 w-4 text-amber-600 focus:ring-amber-500 border-gray-300 rounded"
+//                               />
+//                               <label htmlFor={`product-${product.id}`} className="ml-3 text-gray-700">
+//                                 {product.name}
+//                               </label>
+//                             </div>
+//                           ))}
+//                         </div>
+//                       </div>
+//                     ))}
+//                   </div>
+//                 </div>
+
+//                 {/* Message */}
+//                 <div className="mb-8">
+//                   <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="message">
+//                     Additional Information
+//                   </label>
+//                   <textarea
+//                     id="message"
+//                     name="message"
+//                     rows="4"
+//                     value={formData.message}
+//                     onChange={handleInputChange}
+//                     className="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-amber-500"
+//                     placeholder="Tell us about your specific needs, target market, or any questions you have about our products..."
+//                   ></textarea>
+//                   <p className="text-sm text-gray-500 mt-1">Please provide any specific requirements or questions you may have.</p>
+//                 </div>
+
+//                 {/* Submit Button */}
+//                 <div className="flex items-center justify-center">
+//                   <button
+//                     type="submit"
+//                     className="bg-amber-600 hover:bg-amber-700 text-white font-bold py-3 px-8 rounded-full focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 transition duration-150 ease-in-out flex items-center"
+//                   >
+//                     <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+//                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+//                     </svg>
+//                     Submit
+//                   </button>
+//                 </div>
+//               </form>
+//             </div>
+
+//             <div className="mt-8 text-center text-gray-600">
+//               <p>We&apos;ll get back to you within 24 hours to confirm your sample request.</p>
+//               <p className="mt-2 text-sm">For urgent inquiries, please call us at <span className="text-amber-600 font-medium">+1 (555) 123-4567</span></p>
+//             </div>
+//               </>
+//             )}
+//           </div>
+//         </div>
+//       </div>
+//     </Modal>
+
+//   );
+// }
+
+
