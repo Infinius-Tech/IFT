@@ -43,6 +43,7 @@ export default function SampleRequestForm({ closeModal }) {
         // Only allow letters and spaces
         isValid = /^[a-zA-Z\s]*$/.test(value);
         errorMessage = isValid ? '' : 'Name should only contain letters and spaces';
+        //This is the testing line 
         break;
       case 'email':
         // Basic email validation
