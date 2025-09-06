@@ -180,6 +180,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState, useRef } from "react";
 import { X, CheckCircle, Package, Scale, Leaf, Heart } from "lucide-react";
 import { AllProductsList } from "@/Utils/ProductList";
+import Image from "next/image";
 
 export default function AllProducts() {
     const [selectedProduct, setSelectedProduct] = useState(null);
@@ -289,10 +290,12 @@ export default function AllProducts() {
                                         className="bg-amber-50 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300 flex flex-col h-full"
                                     >
                                         <div className="h-48 bg-amber-200 flex items-center justify-center overflow-hidden">
-                                            <img
-                                                src={product.image}
+                                            <Image
+                                                src={product.cardImage}
                                                 alt={product.name}
                                                 className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
+                                                width={200}
+                                                height={200}
                                             />
                                         </div>
                                         <div className="p-6 flex flex-col flex-grow">
@@ -332,10 +335,12 @@ export default function AllProducts() {
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                                     <div>
                                         <div className="h-64 bg-amber-100 rounded-lg overflow-hidden mb-4">
-                                            <img
+                                            <Image
                                                 src={selectedProduct.image}
                                                 alt={selectedProduct.name}
                                                 className="h-full w-full object-cover"
+                                                width={200}
+                                                height={200}
                                             />
                                         </div>
                                         

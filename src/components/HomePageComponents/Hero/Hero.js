@@ -1,20 +1,63 @@
+'use client'
 
-import Link from 'next/link';
+import SampleRequestForm from "@/components/HomePageComponents/SampleRequestForm/SampleRequestForm";
+import { useState, useEffect } from 'react';
+import styles from './Hero.module.css';
 
 export default function Hero() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  
+  // Array of background images to cycle through
+  const backgroundImages = [
+    '/images/peanutButterHeroBackground.jpg',
+    '/images/peanutbutterjar.png',
+    // '/images/presentingHealthyNutPeanutButterVarieties.png',
+    // '/images/naturalPeanutButterDelight.png',
+  ];
+
+  useEffect(() => {
+    // Set up timer to change image every 5 seconds
+    const imageInterval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => 
+        (prevIndex + 1) % backgroundImages.length
+      );
+    }, 8000);
+
+    // Clean up interval on component unmount
+    return () => clearInterval(imageInterval);
+  }, [backgroundImages.length]);
+
+  const openSampleRequestModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
-    <section className="relative h-screen flex items-center justify-center bg-gradient-to-r from-amber-50 to-amber-100">
-      <div className="absolute inset-0 bg-[url('/images/peanut-hero-bg.jpg')] bg-cover bg-center opacity-20"></div>
-      <div className="container mx-auto px-4 z-10 text-center">
-        <h1 className="text-4xl md:text-6xl font-bold text-[#8B4513] mb-4">Pure. Healthy. Delicious.</h1>
-        <p className="text-xl md:text-2xl text-[#6B8E23] mb-8">Premium Organic Peanut Butter for Your Business</p>
-        <Link 
-          href="/contact" 
-          className="bg-[#6B8E23] hover:bg-[#8B4513] text-white font-bold py-3 px-8 rounded-full transition duration-300 inline-block"
-        >
-          Request a Quote
-        </Link>
+    <section className={`${styles.heroContainer} relative flex items-center justify-center overflow-hidden`}>
+      {/* Background image with gradient overlay */}
+      <div className="absolute inset-0">
+        {backgroundImages.map((image, index) => (
+          <div 
+            key={index}
+            className={`${styles.heroBackground} ${styles['heroBackground' + index]}`}
+            style={{ 
+              backgroundImage: `url('${image}')`,
+              opacity: currentImageIndex === index ? 1 : 0,
+            }}
+          ></div>
+        ))}
+        {/* <div className="absolute inset-0 bg-gradient-to-r from-amber-900/30 to-green-900/30"></div> */}
       </div>
+
+      {/* Content with text shadow for better readability */}
+      {isModalOpen && (
+        <SampleRequestForm closeModal={closeModal} />
+      )}
     </section>
   );
 }
+

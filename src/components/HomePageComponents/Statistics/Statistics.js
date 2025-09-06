@@ -116,7 +116,7 @@ export default function Statistics() {
         <div className="flex justify-center mt-12">
           <div className="flex items-center text-amber-700">
             <Heart className="w-6 h-6 mr-2 fill-current" />
-            <span className="font-medium">Quality & Excellence Since 1992</span>
+            <span className="font-medium">Quality & Excellence Since 2019</span>
           </div>
         </div>
       </div>

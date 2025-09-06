@@ -17,7 +17,10 @@ export const AllProductsList = [
                 certifications: certificatList,
                 sizes: packingSizes,
                 recommended: true,
-                image: "/images/creamy.jpg",
+                cardImage: "/images/productsImage/natural_creamy_peanut_butter_bg.jpg",
+                otherImages: [
+                    "/images/productsImage/natural_creamy_peanut_butter.png",
+                ]
             },
             {
                 id: "C1P2",
@@ -29,7 +32,10 @@ export const AllProductsList = [
                 certifications: certificatList,
                 sizes: packingSizes,
                 recommended: true,
-                image: "/images/creamy.jpg",
+                cardImage: "/images/productsImage/natural_crunchy_peanut_butter_bg.jpg",
+                otherImages: [
+                    "/images/productsImage/natural_crunchy_peanut_butter.png",
+                ]
             },
             {
                 id: "C1P3",
@@ -41,7 +47,10 @@ export const AllProductsList = [
                 certifications: certificatList,
                 sizes: packingSizes,
                 recommended: false,
-                image: "/images/crunchy.jpg",
+                cardImage: "/images/crunchy.jpg",
+                 otherImages: [
+                    "/images/productsImage/natural_creamy_peanut_butter.png",
+                ]
             },
             {
                 id: "C1P4",
@@ -53,7 +62,10 @@ export const AllProductsList = [
                 certifications: certificatList,
                 sizes: packingSizes,
                 recommended: false,
-                image: "/images/crunchy.jpg",
+                cardImage: "/images/crunchy.jpg",
+                 otherImages: [
+                    "/images/productsImage/natural_creamy_peanut_butter.png",
+                ]
             },
             {
                 id: "C1P5",
@@ -65,7 +77,10 @@ export const AllProductsList = [
                 certifications: certificatList,
                 sizes: packingSizes,
                 recommended: false,
-                image: "/images/honey.jpg",
+                cardImage: "/images/honey.jpg",
+                 otherImages: [
+                    "/images/productsImage/natural_creamy_peanut_butter.png",
+                ]
             },
             {
                 id: "C1P6",
@@ -77,7 +92,10 @@ export const AllProductsList = [
                 certifications: certificatList,
                 sizes: packingSizes,
                 recommended: false,
-                image: "/images/honey.jpg",
+                cardImage: "/images/honey.jpg",
+                 otherImages: [
+                    "/images/productsImage/natural_creamy_peanut_butter.png",
+                ]
             },
             {
                 id: "C1P7",
@@ -89,7 +107,10 @@ export const AllProductsList = [
                 certifications: certificatList,
                 sizes: packingSizes,
                 recommended: false,
-                image: "/images/unsaulted.jpg",
+                cardImage: "/images/productsImage/elaichi_crunchy_peanut_butter.png",
+                 otherImages: [
+                    "/images/productsImage/elaichi_crunchy_peanut_butter.png",
+                ]
             },
             {
                 id: "C1P8",
@@ -101,7 +122,10 @@ export const AllProductsList = [
                 certifications: certificatList,
                 sizes: packingSizes,
                 recommended: false,
-                image: "/images/unsaulted.jpg",
+                cardImage: "/images/unsaulted.jpg",
+                 otherImages: [
+                    "/images/productsImage/elaichi_crunchy_peanut_butter.png",
+                ]
             },
             {
                 id: "C1P9",
@@ -113,7 +137,10 @@ export const AllProductsList = [
                 certifications: certificatList,
                 sizes: packingSizes,
                 recommended: false,
-                image: "/images/creamy.jpg",
+                cardImage: "/images/creamy.jpg",
+                 otherImages: [
+                    "/images/productsImage/natural_creamy_peanut_butter.png",
+                ]
             },
             {
                 id: "C1P10",
@@ -125,7 +152,7 @@ export const AllProductsList = [
                 certifications: certificatList,
                 sizes: packingSizes,
                 recommended: false,
-                image: "/images/crunchy.jpg",
+                cardImage: "/images/crunchy.jpg",
             },
             {
                 id: "C1P11",
@@ -137,7 +164,10 @@ export const AllProductsList = [
                 certifications: certificatList,
                 sizes: packingSizes,
                 recommended: false,
-                image: "/images/honey.jpg",
+                cardImage: "/images/honey.jpg",
+                 otherImages: [
+                    "/images/productsImage/natural_creamy_peanut_butter.png",
+                ]
             },
             {
                 id: "C1P12",
@@ -149,7 +179,10 @@ export const AllProductsList = [
                 certifications: certificatList,
                 sizes: packingSizes,
                 recommended: false,
-                image: "/images/unsaulted.jpg",
+                cardImage: "/images/unsaulted.jpg",
+                 otherImages: [
+                    "/images/productsImage/natural_creamy_peanut_butter.png",
+                ]
             },
             {
                 id: "C1P13",
@@ -161,7 +194,10 @@ export const AllProductsList = [
                 certifications: certificatList,
                 sizes: packingSizes,
                 recommended: false,
-                image: "/images/unsaulted.jpg",
+                cardImage: "/images/unsaulted.jpg",
+                 otherImages: [
+                    "/images/productsImage/natural_creamy_peanut_butter.png",
+                ]
             }
         ]
     },
@@ -171,40 +207,40 @@ export const AllProductsList = [
         products: [
             {
                 id: "C2P1",
-                name: "Creamy Organic",
-                description: "Smooth texture perfect for spreads and baking",
-                detailedDescription: "Our signature creamy organic peanut butter is made from 100% certified organic peanuts. It has a velvety smooth texture that spreads easily and is perfect for baking applications. Contains no added sugars, preservatives, or artificial ingredients.",
-                ingredients: "Organic peanuts, organic palm fruit oil (for stability), sea salt.",
-                nutrition: "Per 2 tbsp (32g): Calories 190, Fat 16g, Carbs 7g, Protein 8g",
-                certifications: ["USDA Organic", "Non-GMO Project Verified", "Keto Certified"],
-                sizes: ["5 lb tub", "25 lb pail", "50 lb drum"],
-                image: "/images/creamy.jpg",
+                name: "Almond Butter",
+                description: "Made from 100% roasted California almonds, our almond butter is rich in protein, fiber & healthy fats—pure, creamy & nutritious",
+                detailedDescription: "Experience the pure taste of nature with our Almond Butter, crafted from 100% premium California almonds—slow roasted to perfection. With no added sugar, no preservatives, and no hydrogenated oils, it delivers wholesome nutrition in every spoon. Packed with plant-based protein, dietary fiber, Vitamin E, and healthy fats, almond butter is the ideal superfood spread for fitness enthusiasts, weight watchers, and anyone seeking a nutritious lifestyle. Spread it on toast, blend into smoothies, or enjoy straight from the jar—it’s creamy, nutty, and irresistibly healthy.",
+                ingredients: "100% Roasted California Almond",
+                nutrition: "Per 2 tbsp (32g): Calories 195kcal, Fat 18g, Carbs 6g, Protein 7g",
+                certifications: certificatList,
+                sizes: packingSizes,
+                cardImage: "/images/creamy.jpg",
                 recommended: false
             },
             {
                 id: "C2P2",
-                name: "Crunchy Organic",
-                description: "Classic crunchy with peanut pieces for texture",
-                detailedDescription: "Our crunchy organic peanut butter features finely chopped peanut pieces for that satisfying texture everyone loves. Made from premium organic peanuts with just a touch of sea salt to enhance the natural peanut flavor.",
-                ingredients: "Organic peanuts, organic palm fruit oil (for stability), sea salt.",
-                nutrition: "Per 2 tbsp (32g): Calories 200, Fat 17g, Carbs 7g, Protein 9g",
-                certifications: ["USDA Organic", "Non-GMO Project Verified"],
-                sizes: ["5 lb tub", "25 lb pail", "50 lb drum"],
-                image: "/images/crunchy.jpg",
+                name: "Cashew Butter",
+                description: "Smooth, creamy cashew butter made from 100% roasted premium cashews. Naturally rich in protein, magnesium & healthy fats.",
+                detailedDescription: "Delight your taste buds with the rich, creamy flavor of our Cashew Butter, made from 100% premium roasted cashews. With no added sugar, no preservatives, and no artificial ingredients, it’s a pure nut butter that’s both indulgent and healthy. Naturally packed with protein, magnesium, iron, and healthy fats, cashew butter is a delicious source of energy that supports overall wellness. Enjoy it as a spread, in desserts, smoothies, or straight from the jar—its silky smooth texture makes every spoonful irresistible.",
+                ingredients: "100% Roasted Premium Cashew											",
+                nutrition: "Per 2 tbsp (32g): Calories 186kcal, Fat 15g, Carbs 9g, Protein 6g",
+                certifications: certificatList,
+                sizes: packingSizes,
+                cardImage: "/images/crunchy.jpg",
                 recommended: false
             },
             {
                 id: "C2P3",
-                name: "Honey Roasted",
-                description: "Sweetened with organic honey for a delightful flavor",
-                detailedDescription: "Our honey roasted peanut butter combines premium peanuts with organic honey for a naturally sweet flavor profile. Perfect for dessert applications, smoothies, or as a special treat.",
-                ingredients: "Organic peanuts, organic honey, organic palm fruit oil, sea salt.",
-                nutrition: "Per 2 tbsp (32g): Calories 210, Fat 16g, Carbs 10g, Protein 8g",
-                certifications: ["USDA Organic", "Non-GMO Project Verified"],
-                sizes: ["5 lb tub", "25 lb pail"],
-                image: "/images/honey.jpg",
+                name: "Tahini (Sesame Paste)",
+                description: "Smooth, creamy tahini made from 100% roasted sesame seeds. Rich in protein, calcium & healthy fats—perfect for dips, dressings & spreads",
+                detailedDescription: "Our Tahini is crafted from 100% premium roasted sesame seeds, stone-ground into a smooth, creamy paste. With no added sugar, preservatives, or artificial ingredients, it’s a wholesome superfood packed with plant-based protein, calcium, iron, and healthy fats. Traditionally used in Middle Eastern and Mediterranean cuisine, tahini is the key ingredient in hummus, baba ganoush, dressings, sauces, and desserts. Its nutty, earthy flavor and silky texture make it a versatile kitchen essential for both home cooks and professional chefs. Whether you’re looking for a nutritious spread, a vegan-friendly ingredient, or a natural source of energy, our 100% sesame seed tahini is the perfect choice.",
+                ingredients: "100% Roasted Premium Hulled Sesame ",
+                nutrition: "Per 2 tbsp (32g): Calories 191kcal, Fat 17g, Carbs 7g, Protein 5g",
+                certifications: certificatList,
+                sizes: packingSizes,
+                cardImage: "/images/honey.jpg",
                 recommended: false
-            },
+            }
         ]
     },
     {
@@ -220,7 +256,7 @@ export const AllProductsList = [
                 nutrition: "Per 2 tbsp (32g): Calories 200, Fat 17g, Carbs 7g, Protein 9g",
                 certifications: ["USDA Organic", "Non-GMO Project Verified"],
                 sizes: ["40 kg bag"],
-                image: "/images/creamy.jpg",
+                cardImage: "/images/creamy.jpg",
                 recommended: false
             },
             {
@@ -232,7 +268,7 @@ export const AllProductsList = [
                 nutrition: "Per 2 tbsp (32g): Calories 200, Fat 17g, Carbs 7g, Protein 9g",
                 certifications: ["USDA Organic", "Non-GMO Project Verified"],
                 sizes: ["5 lb tub", "25 lb pail", "50 lb drum"],
-                image: "/images/crunchy.jpg",
+                cardImage: "/images/crunchy.jpg",
                 recommended: false
             },
         ]
@@ -250,7 +286,7 @@ export const AllProductsList = [
                 nutrition: "Per 2 tbsp (32g): Calories 190, Fat 16g, Carbs 7g, Protein 8g",
                 certifications: certificatList,
                 sizes: packingSizes,
-                image: "/images/creamy.jpg",
+                cardImage: "/images/creamy.jpg",
                 recommended: false
             },
         ]

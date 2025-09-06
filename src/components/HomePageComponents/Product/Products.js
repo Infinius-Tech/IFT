@@ -29,7 +29,7 @@ const products = AllProductsList.flatMap(p => p.products).filter(p => p.recommen
                 <Image
                   width={200}
                   height={200}
-                  src={product.image}
+                  src={product.cardImage}
                   alt={product.name}
                   className="h-full w-full object-cover"
                 />

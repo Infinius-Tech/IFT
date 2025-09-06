@@ -1,276 +1,10 @@
-// "use client";
-// import Link from 'next/link';
-// import { useState, useRef, useEffect } from 'react';
-// import SampleRequestForm from '../HomePageComponents/SampleRequestForm/SampleRequestForm';
-// import Image from 'next/image';
-
-// const navLinks = [
-//   { id: 1, title: 'Home', path: "/" },
-//   { id: 2, title: 'About', path: "/about" },
-//   { id: 3, title: 'Products', path: "/products", hasDropdown: true },
-//   { id: 4, title: 'Gallery', path: "/gallery" },
-//   { id: 5, title: 'Contact', path: "/contact" },
-//   { id: 6, title: 'Sample Request', path: "#sample-request-form", isModal: true, isCta: true },
-// ];
-
-// // Product dropdown options
-// const productOptions = [
-//   { id: 1, title: "Peanut Butter", path: "/products#peanut-butter" },
-//   { id: 2, title: "Nut Butter", path: "/products#nut-butter" },
-//   { id: 3, title: "Roasted Peanut", path: "/products#roasted-peanut" },
-//   { id: 4, title: "Spred", path: "/products#spred" },
-// ];
-
-// function Header() {
-//   const [isMenuOpen, setIsMenuOpen] = useState(false);
-//   const [isModalOpen, setIsModalOpen] = useState(false);
-//   const [isProductsDropdownOpen, setIsProductsDropdownOpen] = useState(false);
-//   const dropdownRef = useRef(null);
-//   const dropdownTimer = useRef(null);
-
-//   const handleSampleRequestClick = (e, isModal) => {
-//     if (isModal) {
-//       e.preventDefault();
-//       setIsModalOpen(true);
-//       setIsMenuOpen(false);
-//     }
-//   };
-
-//   const closeModal = () => {
-//     setIsModalOpen(false);
-//   };
-
-//   // Handle dropdown hover events
-//   const handleMouseEnter = () => {
-//     if (dropdownTimer.current) {
-//       clearTimeout(dropdownTimer.current);
-//     }
-//     setIsProductsDropdownOpen(true);
-//   };
-
-//   const handleMouseLeave = () => {
-//     dropdownTimer.current = setTimeout(() => {
-//       setIsProductsDropdownOpen(false);
-//     }, 300);
-//   };
-
-//   // Close dropdown when clicking outside
-//   useEffect(() => {
-//     const handleClickOutside = (event) => {
-//       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-//         setIsProductsDropdownOpen(false);
-//       }
-//     };
-
-//     document.addEventListener("mousedown", handleClickOutside);
-//     return () => {
-//       document.removeEventListener("mousedown", handleClickOutside);
-//     };
-//   }, []);
-
-//   return (
-//     <>
-//       <header className="bg-[#8B4513] text-white sticky top-0 z-50">
-//         <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-//           <Link href="/" className="flex items-center space-x-3">
-//             <div className="flex items-center">
-//               <Image 
-//                 src='/indianFoodtechLogo.png' 
-//                 alt='Indian Foodtech Logo' 
-//                 width={50} 
-//                 height={50}
-//                 className="rounded"
-//               />
-//             </div>
-//             <div className="flex flex-col">
-//               <span className="font-bold text-lg leading-tight">INDIAN FOODTECH</span>
-//               <span className="text-xs text-amber-200">Manufacturer of Peanut Butter</span>
-//             </div>
-//           </Link>
-
-//           <nav className="hidden md:flex items-center space-x-6 relative">
-//             {navLinks.map(link => (
-//               link.hasDropdown ? (
-//                 <div 
-//                   key={link.id} 
-//                   className="relative"
-//                   ref={dropdownRef}
-//                   onMouseEnter={handleMouseEnter}
-//                   onMouseLeave={handleMouseLeave}
-//                 >
-//                   <button 
-//                     className="hover:text-amber-200 transition flex items-center text-white py-2 px-3 rounded-md"
-//                   >
-//                     {link.title}
-//                     <svg 
-//                       className={`ml-1 h-4 w-4 transition-transform ${isProductsDropdownOpen ? 'rotate-180' : ''}`} 
-//                       fill="none" 
-//                       viewBox="0 0 24 24" 
-//                       stroke="currentColor"
-//                     >
-//                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-//                     </svg>
-//                   </button>
-
-//                   {isProductsDropdownOpen && (
-//                     <div className="absolute top-full left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50">
-//                       {productOptions.map(option => (
-//                         <Link
-//                           key={option.id}
-//                           href={option.path}
-//                           className="block px-4 py-2 text-sm text-gray-800 hover:bg-amber-100"
-//                           onClick={() => setIsProductsDropdownOpen(false)}
-//                         >
-//                           {option.title}
-//                         </Link>
-//                       ))}
-//                     </div>
-//                   )}
-//                 </div>
-//               ) : link.isCta ? (
-//                 // Special styling for Sample Request button
-//                 <div key={link.id} className="ml-4">
-//                   <button
-//                     onClick={(e) => handleSampleRequestClick(e, link.isModal)}
-//                     className="bg-amber-500 hover:bg-amber-600 text-white font-bold py-2 px-5 rounded-full transition-all duration-300 transform hover:scale-105 shadow-md flex items-center"
-//                   >
-//                     <span className="mr-2">Sample Request</span>
-//                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-//                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
-//                     </svg>
-//                   </button>
-//                 </div>
-//               ) : (
-//                 <Link 
-//                   key={link.id} 
-//                   href={link.path}
-//                   className="hover:text-amber-200 transition text-white py-2 px-3 rounded-md"
-//                 >
-//                   {link.title}
-//                 </Link>
-//               )
-//             ))}
-//           </nav>
-
-//           <button 
-//             className="md:hidden" 
-//             onClick={() => setIsMenuOpen(!isMenuOpen)}
-//           >
-//             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-//               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-//             </svg>
-//           </button>
-//         </div>
-
-//         {/* Mobile menu */}
-//         {isMenuOpen && (
-//           <div className="md:hidden bg-[#8B4513] py-4 px-4">
-//             <div className="flex flex-col space-y-3">
-//               {navLinks.map(link => (
-//                 link.hasDropdown ? (
-//                   <div key={link.id}>
-//                     <button 
-//                       className="hover:text-amber-200 transition w-full text-left py-2 px-3 rounded-md"
-//                       onClick={() => setIsProductsDropdownOpen(!isProductsDropdownOpen)}
-//                     >
-//                       <div className="flex justify-between items-center">
-//                         {link.title}
-//                         <svg 
-//                           className={`h-4 w-4 transition-transform ${isProductsDropdownOpen ? 'rotate-180' : ''}`} 
-//                           fill="none" 
-//                           viewBox="0 0 24 24" 
-//                           stroke="currentColor"
-//                         >
-//                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-//                         </svg>
-//                       </div>
-//                     </button>
-//                     {isProductsDropdownOpen && (
-//                       <div className="pl-4 mt-2 space-y-2">
-//                         {productOptions.map(option => (
-//                           <Link
-//                             key={option.id}
-//                             href={option.path}
-//                             className="block text-amber-100 hover:text-amber-200 transition py-2"
-//                             onClick={() => {
-//                               setIsProductsDropdownOpen(false);
-//                               setIsMenuOpen(false);
-//                             }}
-//                           >
-//                             {option.title}
-//                           </Link>
-//                         ))}
-//                       </div>
-//                     )}
-//                   </div>
-//                 ) : link.isCta ? (
-//                   // Special styling for Sample Request button in mobile
-//                   <button
-//                     key={link.id}
-//                     onClick={(e) => {
-//                       setIsMenuOpen(false);
-//                       handleSampleRequestClick(e, link.isModal);
-//                     }}
-//                     className="bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-5 rounded-full transition-all duration-300 w-full text-center mt-2"
-//                   >
-//                     {link.title}
-//                   </button>
-//                 ) : (
-//                   <Link 
-//                     key={link.id} 
-//                     href={link.path}
-//                     className="hover:text-amber-200 transition py-2 px-3 rounded-md block"
-//                     onClick={() => {
-//                       setIsMenuOpen(false);
-//                     }}
-//                   >
-//                     {link.title}
-//                   </Link>
-//                 )
-//               ))}
-//             </div>
-//           </div>
-//         )}
-//       </header>
-
-//       {isModalOpen && (
-//         <div className="fixed inset-0 bg-[#000000bf] flex items-center justify-center z-50 p-4">
-//           <div className="bg-white w-full max-w-2xl shadow-xl max-h-[90vh] overflow-y-auto">
-//             <div className="flex justify-between items-center p-4 border-b">
-//               <h2 className="text-2xl font-bold text-gray-800">Request a Sample</h2>
-//               <button 
-//                 onClick={closeModal}
-//                 className="text-gray-500 hover:text-gray-700"
-//               >
-//                 <svg className="w-6 h-6" fill="none" stroke="currentColor" 
-//                   viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-//                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
-//                     d="M6 18L18 6M6 6l12 12" />
-//                 </svg>
-//               </button>
-//             </div>
-
-//             <div className="p-6">
-//               <SampleRequestForm />
-//             </div>
-//           </div>
-//         </div>
-//       )}
-//     </>
-//   );
-// }
-
-// export default Header;
-
-
-
-
 "use client";
 import Link from 'next/link';
 import { useState, useRef, useEffect } from 'react';
 import SampleRequestForm from '../HomePageComponents/SampleRequestForm/SampleRequestForm';
 import Image from 'next/image';
 import LogoComponent from '../LogoComponent/LogoComponent';
+import styles from './Header.module.css';
 
 const navLinks = [
   { id: 1, title: 'HOME', path: "/" },
@@ -338,24 +72,11 @@ function Header() {
     };
   }, []);
 
-  // Color animation effect for the CTA button
-  // useEffect(() => {
-  //   const colorInterval = setInterval(() => {
-  //     setCtaButtonColor(prevColor => 
-  //       prevColor === "bg-amber-600" ? "bg-green-600" : "bg-amber-600"
-  //     );
-  //   }, 1000);
-
-  //   return () => {
-  //     clearInterval(colorInterval);
-  //   };
-  // }, []);
-
   return (
-    <>
+    <div className={styles.headerContainer}>
       {/* Top contact bar */}
-      <div className='bg-amber-800 h-[80px] sticky top-0 z-50' >
-        <div className="text-white text-xs py-1 ">
+      <div className={`${styles.topBar} bg-amber-800 top-0 z-50 w-full`} >
+        <div className="text-white text-xs py-1 w-full">
           <div className="container mx-auto px-4 flex justify-between items-center">
             <div className="flex space-x-4">
               <span className="flex items-center">
@@ -392,9 +113,9 @@ function Header() {
         </div>
 
         {/* Main header */}
-        <header className="text-gray-800 flex justify-center">
-          <div className="container mx-auto px-4 py-3 flex justify-between items-center bg-white shadow-md">
-            <Link href="/" className="flex items-center space-x-3">
+        <header className="text-gray-800 flex justify-center relative w-full bg-white shadow-md">
+          <div className="container mx-auto flex justify-between items-center w-full">
+            <Link href="/" className="flex items-center space-x-3 py-4">
               <LogoComponent textColor="text-black" />
             </Link>
 
@@ -471,7 +192,7 @@ function Header() {
 
           {/* Mobile menu */}
           {isMenuOpen && (
-            <div className="md:hidden bg-white py-4 px-4 shadow-lg">
+            <div className="md:hidden bg-white py-4 px-4 shadow-lg w-full absolute top-full left-0 z-50">
               <div className="flex flex-col space-y-2">
                 {navLinks.map(link => (
                   link.hasDropdown ? (
@@ -544,7 +265,7 @@ function Header() {
         <SampleRequestForm closeModal={closeModal} />
       )}
 
-    </>
+    </div>
   );
 }
 
