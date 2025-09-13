@@ -1,6 +1,5 @@
 import AllProducts from '@/components/AllProductComponent/AllProducts';
-import React from "react";
-
+import React, { Suspense } from "react";
 
 export const metadata = {
   title: 'Product | Peanut Butter',
@@ -9,7 +8,9 @@ export const metadata = {
 
 const ProductPage = () => (
   <>
-    <AllProducts/>
+    <Suspense fallback={<div className="p-12 text-center">Loading products...</div>}>
+      <AllProducts/>
+    </Suspense>
   </>
 );
 
