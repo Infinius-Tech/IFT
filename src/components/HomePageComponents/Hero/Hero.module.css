@@ -1,0 +1,70 @@
+.heroContainer {
+    height: 100vh;
+}
+
+.heroBackground {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    transition: opacity 1s ease-in-out;
+    z-index: 0;
+}
+
+/* Custom positioning for each background image */
+.heroBackground0 {
+    background-position: center;
+}
+
+.heroBackground1 {
+    background-position: center;
+}
+
+.heroBackground2 {
+    background-position: center;
+}
+
+
+@media screen and (max-width: 1300px) {
+    .heroContainer {
+        height: 70vh;
+    }
+
+    .heroBackground {
+        background-position: center;
+    }
+}
+
+
+@media screen and (max-width: 1000px) {
+    .heroContainer {
+        height: 50vh;
+    }
+
+    .heroBackground {
+        background-position: center;
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    .heroContainer {
+        height: 50vh;
+    }
+
+    .heroBackground {
+        background-position: center;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .heroContainer {
+        height: 30vh;
+    }
+
+    .heroBackground {
+        background-position: center 30%;
+    }
+}

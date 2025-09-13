@@ -1,11 +1,13 @@
 
 import Link from 'next/link';
 import LogoComponent from '../LogoComponent/LogoComponent';
+import { 
+  indianFoodTechEmail, indianFoodTechAddress1, indianFoodTechAddress2, indianFoodTechAddress3, indianFoodTechPhone } from '../../Utils/CommonConst';
 
 const navLinks = [
   { id: 1, title: 'About Us', path: "/aboutUs" },
   { id: 2, title: 'Products', path: "/products" },
-  { id: 3, title: 'Gallery', path: "/gallery" },
+  { id: 3, title: 'Certificate', path: "/certificate" },
   { id: 4, title: 'Contact Us', path: "/contact" },
 ];
 
@@ -40,12 +42,12 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-semibold mb-4">Contact Info</h3>
             <div className="mb-2">
-              <p>Ground Floor, Plot No. 196, 197, 198, </p>
-              <p> Om Industries Estate, Vibhag-1, Village - Mankna, </p>
-              <p>Kamrej, Surat - 394190, Gujarat, India</p>
+              <p>{indianFoodTechAddress1}</p>
+              <p>{indianFoodTechAddress2}</p>
+              <p>{indianFoodTechAddress3}</p>
             </div>
-            <p className="mb-2">Email: office@indianfoodtech.in</p>
-            <p>Phone: +91 97148 99711</p>
+            <p className="mb-2">Email: {indianFoodTechEmail}</p>
+            <p>Phone: {indianFoodTechPhone}</p>
           </div>
         </div>
 

@@ -1,0 +1,36 @@
+.logoImageheader {
+  border-radius: 50%;
+}
+
+@media screen and (max-width: 1220px) {
+  .logoImageheader {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .logoFont {
+    font-size: 1.25rem;
+  }
+}
+
+@media screen and(max-width: 768px) {
+  .logoImageheader {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .logoFont {
+    font-size: 1.25rem;
+  }
+}
+
+@media screen and(max-width: 480px) {
+  .logoImageheader {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .logoFont {
+    font-size: 1rem;
+  }
+}

@@ -41,7 +41,7 @@ export default function ProductDetails() {
           {/* Left Section (Image + Extras) */}
           <div className="relative">
              <Image
-                     src={selectedProduct.image}
+                     src={selectedProduct.otherImages && selectedProduct.otherImages.length > 0 ? selectedProduct.otherImages[0] : selectedProduct.cardImage}
                       alt={selectedProduct.name}
                       width={600}
                       height={600}
@@ -118,7 +118,7 @@ export default function ProductDetails() {
     
     {/* Sample Request Form Modal */}
     {isModalOpen && (
-            <SampleRequestForm closeModal={closeModal} />
+      <SampleRequestForm closeModal={closeModal} />
     )}
     </div>
   );

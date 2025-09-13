@@ -8,7 +8,7 @@ export const metadata = {
 
 const AboutPage = () => (
   <>
-    <About/>
+    <About isHomePage={false} />
   </>
 );
 
