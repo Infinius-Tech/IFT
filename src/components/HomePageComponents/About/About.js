@@ -34,7 +34,7 @@ export default function About({ isHomePage }) {
             {isHomePage && (
               <button
                 onClick={() => router.push("/aboutUs")}
-                className="bg-[#8B4513] hover:bg-[#6B8E23] text-white font-medium py-3 px-8 rounded-lg transition duration-300 shadow-md hover:shadow-lg"
+                className="bg-[#8B4513] hover:bg-[#6B8E23] text-white font-medium py-3 px-8 rounded-lg transition duration-300 shadow-md hover:shadow-lg mt-4"
               >
                 Learn More
               </button>
