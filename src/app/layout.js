@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
 import WhatsAppButton from "@/components/WhatsAppComponent/WhatsApp";
+import ContactModal from "@/Utils/ContactModal";
 
 
 const geistSans = Geist({
@@ -30,6 +31,7 @@ export default function RootLayout({ children }) {
           {children}
           <Footer />
            <WhatsAppButton />
+        {/* <ContactModal autoOpenInterval={5000} /> */}
       </body>
     </html>
   );

@@ -12,8 +12,6 @@ export default function Hero() {
   const backgroundImages = [
     '/images/peanutButterHeroBackground.jpg',
     '/images/peanutbutterjar.png',
-    // '/images/presentingHealthyNutPeanutButterVarieties.png',
-    // '/images/naturalPeanutButterDelight.png',
   ];
 
   useEffect(() => {
@@ -50,7 +48,6 @@ export default function Hero() {
             }}
           ></div>
         ))}
-        {/* <div className="absolute inset-0 bg-gradient-to-r from-amber-900/30 to-green-900/30"></div> */}
       </div>
 
       {/* Content with text shadow for better readability */}

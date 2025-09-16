@@ -1,29 +1,9 @@
-
-
 "use client";
 
 import { Package, Box, Weight, Container, Download } from "lucide-react";
 import { packagingData } from "@/Utils/ContainerPackageData";
 
 export default function PackagingTable() {
-  // const [activeTab, setActiveTab] = useState("boxes");
-
-  // const downloadCSV = () => {
-  //   const headers = "Pack Size,Dimension (mm),Gross Weight (Kgs),Net Weight (Kgs),Boxes/Carton (20ft),Trays (20ft),Boxes/Carton (40ft),Trays (40ft)\n";
-  //   const csvContent = packagingData.map(row => 
-  //     `"${row.packSize}","${row.dimension}","${row.grossWeight}","${row.netWeight}","${row.boxes20ft}","${row.trays20ft}","${row.boxes40ft}","${row.trays40ft}"`
-  //   ).join("\n");
-    
-  //   const blob = new Blob([headers + csvContent], { type: 'text/csv;charset=utf-8;' });
-  //   const url = URL.createObjectURL(blob);
-  //   const link = document.createElement("a");
-  //   link.setAttribute("href", url);
-  //   link.setAttribute("download", "packaging_details.csv");
-  //   link.style.visibility = 'hidden';
-  //   document.body.appendChild(link);
-  //   link.click();
-  //   document.body.removeChild(link);
-  // };
 
   return (
     <section className="py-12 bg-gradient-to-b mt-4">

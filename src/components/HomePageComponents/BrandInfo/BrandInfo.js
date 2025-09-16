@@ -49,11 +49,6 @@ export default function BrandedPeanutButter() {
                   </div>
                 </div>
               </div>
-
-              {/* <button className="mt-8 w-full bg-[#8B4513] hover:bg-[#6B8E23] text-white font-bold py-3 px-6 rounded-xl shadow-md transition duration-300 flex items-center justify-center">
-                <Globe className="w-5 h-5 mr-2" />
-                Start Your Global Brand Today
-              </button> */}
             </div>
           </div>
 
