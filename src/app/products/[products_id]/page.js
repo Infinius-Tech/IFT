@@ -47,11 +47,6 @@ export default function ProductDetails() {
                       height={600}
                       className="rounded"
                     />
-            {/* <img
-              src={selectedProduct.image}
-              alt={selectedProduct.name}
-              className="w-full h-full object-cover"
-            /> */}
             <div className="absolute top-4 left-4 bg-amber-600 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-md">
               {selectedProduct.name}
             </div>
