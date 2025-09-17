@@ -1,5 +1,5 @@
 .heroContainer {
-    height: 100vh;
+    height: 50vw;
 }
 
 .heroBackground {
@@ -13,24 +13,11 @@
     z-index: 0;
 }
 
-/* Custom positioning for each background image */
-.heroBackground0 {
-    background-position: center;
-}
-
-.heroBackground1 {
-    background-position: center;
-}
-
-.heroBackground2 {
-    background-position: center;
-}
-
 
 @media screen and (max-width: 1300px) {
-    .heroContainer {
-        height: 70vh;
-    }
+    /* .heroContainer {
+        height: 70vw;
+    } */
 
     .heroBackground {
         background-position: center;
@@ -68,3 +55,4 @@
         background-position: center 30%;
     }
 }
+

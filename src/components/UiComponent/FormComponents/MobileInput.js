@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
-// Country code data with country names and flags
+// Country code data
 const countryCodes = [
   { code: '+1', name: 'United States', flag: '🇺🇸' },
   { code: '+91', name: 'India', flag: '🇮🇳' },
@@ -67,92 +67,100 @@ export default function MobileInput({
   const [selectedCountryCode, setSelectedCountryCode] = useState(defaultCountryCode);
   const [mobileNumber, setMobileNumber] = useState(value || '');
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
+  const dropdownRef = useRef();
+
+  // Handle clicks outside dropdown
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsDropdownOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   const onMobileNumberChange = (e) => {
     const { value } = e.target;
     if (/^\d{0,15}$/.test(value)) {
       setMobileNumber(value);
-      // Send combined value to parent with hyphen between country code and number
-      onChange({
-        target: {
-          name,
-          value: selectedCountryCode + '-' + value
-        }
-      });
+      onChange({ target: { name, value: selectedCountryCode + '-' + value } });
     }
   };
 
   const handleCountryCodeChange = (countryCode) => {
     setSelectedCountryCode(countryCode);
     setIsDropdownOpen(false);
-    // Update parent with new combined value including hyphen
-    onChange({
-      target: {
-        name,
-        value: countryCode + '-' + mobileNumber
-      }
-    });
+    setSearchTerm('');
+    onChange({ target: { name, value: countryCode + '-' + mobileNumber } });
   };
 
-  const selectedCountry = countryCodes.find(country => country.code === selectedCountryCode);
+  const selectedCountry = countryCodes.find(c => c.code === selectedCountryCode);
+
+  // Filter countries by search term
+  const filteredCountries = countryCodes.filter(
+    c => c.name.toLowerCase().includes(searchTerm.toLowerCase()) || c.code.includes(searchTerm)
+  );
 
   return (
-    <div>
-      <label className="block text-[#8B4513] mb-2 font-medium" htmlFor={name}>
+    <div className="relative">
+      <label className="block text-sm sm:text-md text-[#8B4513] mb-2 font-medium" htmlFor={name}>
         {label}
       </label>
 
-      <div className='relative flex rounded-xl border border-gray-300 '>
-        <div className="flex items-stretch rounded-xl overflow-hidden focus-within:ring-2 focus-within:ring-amber-500 focus-within:border-transparent">
-          {/* Country Code Dropdown */}
-          <div className="relative">
-            <button
-              type="button"
-              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-              className="h-full px-3 py-3 border-r border-gray-300 focus:outline-none flex items-center min-w-[80px]"
+      <div className='flex '>
+        {/* Country Picker */}
+        <div ref={dropdownRef} className="relative">
+          <button
+            type="button"
+            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+            className="h-full px-3 py-3 border-[1px] border-r-0 border-[#8B4513] rounded-l-xl focus:outline-none flex items-center "
+          >
+            <span className="text-sm font-medium text-[#8B4513]">
+              {selectedCountryCode}
+              {/* {selectedCountry?.flag} */}
+            </span>
+            <svg
+              className={`w-4 h-4 ml-1 text-[#8B4513] transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`}
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
             >
-              <span className="text-sm font-medium text-[#8B4513]">
-                {selectedCountry?.flag} {selectedCountryCode}
-              </span>
-              <svg
-                className={`w-4 h-4 ml-1 text-[#8B4513] transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`}
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-              </svg>
-            </button>
-          </div>
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
 
           {isDropdownOpen && (
-            <div className="absolute top-full left-0 mt-1 w-64 max-h-60 overflow-auto bg-white border border-gray-300 rounded-lg shadow-lg z-10">
-              <div className="p-2 border-b border-gray-200">
+            <div className="absolute top-full left-0 mt-1 w-64 max-h-60 bg-white border rounded-lg shadow-lg z-10">
+              <div className="p-2 border-b border-gray-200 text-black">
                 <input
                   type="text"
                   placeholder="Search countries..."
                   className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
                   onClick={(e) => e.stopPropagation()}
                 />
               </div>
-
               <div className="py-1 max-h-48 overflow-y-auto">
-                {countryCodes.map((country) => (
+                {filteredCountries.map(country => (
                   <button
                     key={country.code}
                     type="button"
-                    className={`w-full text-left px-4 py-2 hover:bg-amber-50 focus:bg-amber-50 focus:outline-none text-sm ${selectedCountryCode === country.code ? 'bg-amber-100 text-[#8B4513]' : 'text-gray-900'
-                      }`}
+                    className={`w-full text-left px-4 py-2 hover:bg-amber-50 focus:bg-amber-50 focus:outline-none text-sm ${selectedCountryCode === country.code ? 'bg-amber-100 text-[#8B4513]' : 'text-gray-900'}`}
                     onClick={() => handleCountryCodeChange(country.code)}
                   >
-                    <span className="mr-2">{country.flag}</span>
+                    {/* <span className="mr-2">{country.flag}</span> */}
                     <span className="font-medium">{country.code}</span>
                     <span className="text-gray-600 ml-2">{country.name}</span>
                   </button>
                 ))}
+                {filteredCountries.length === 0 && (
+                  <p className="text-gray-500 text-sm px-4 py-2">No countries found</p>
+                )}
               </div>
             </div>
-
           )}
         </div>
 
@@ -164,8 +172,7 @@ export default function MobileInput({
           value={mobileNumber}
           onChange={onMobileNumberChange}
           placeholder={placeholder}
-          className={`flex-1 px-4 py-3 appearance-none border-none focus:outline-none text-[#8B4513] autofill:bg-amber-50 autofill:text-[#8B4513] ${error ? 'border-red-500' : ''
-            }`}
+          className="shadow appearance-none text-sm sm:text-md border rounded-r-xl w-full py-3 px-4 text-[#8B4513] leading-tight focus:outline-none focus:ring-2 focus:ring-amber-500"
         />
       </div>
 
