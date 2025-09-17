@@ -4,14 +4,16 @@ import { useState } from "react";
 import { Mail, Phone, Clock, Building, MessageSquare } from "lucide-react";
 import { indianFoodTechPhone } from "@/Utils/CommonConst";
 import ContactForm from "@/components/UiComponent/ContactComponent/ContactForm";
+import useScreenSize from "@/customHook/useScreenSize";
 
 export default function ContactInfo() {
-  
-    const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    const { isLargeScreen } = useScreenSize(1024);
+
+    const handlePhoneClick = (e) => {
+    if (isLargeScreen) {
+      e.preventDefault();
+      window.open(`https://wa.me/${indianFoodTechPhone.replace(/\D/g, '')}`, '_blank');
+    }
   };
 
   return (
@@ -76,8 +78,8 @@ export default function ContactInfo() {
                 </div>
               </div>
               <a
-                //  href="https://wa.me/+919714899711"
-                href={`https://wa.me/${indianFoodTechPhone}`}
+                href={`tel:${indianFoodTechPhone}`} 
+                onClick={handlePhoneClick}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-6 inline-flex items-center bg-[#25D366] hover:bg-green-600 text-white font-semibold py-3 px-5 rounded-xl transition duration-300"
@@ -104,5 +106,6 @@ export default function ContactInfo() {
         }
       `}</style>
     </section>
+    
   );
-}
+ }

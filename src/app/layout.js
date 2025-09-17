@@ -4,6 +4,7 @@ import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
 import WhatsAppButton from "@/components/WhatsAppComponent/WhatsApp";
 import ContactModal from "@/Utils/ContactModal";
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 
 const geistSans = Geist({
@@ -30,8 +31,9 @@ export default function RootLayout({ children }) {
           <Header />
           {children}
           <Footer />
-           <WhatsAppButton />
-        {/* <ContactModal autoOpenInterval={5000} /> */}
+          <WhatsAppButton />
+          <ContactModal firstOpenDelay={20000} reopenDelay={300000} />
+           <SpeedInsights />
       </body>
     </html>
   );

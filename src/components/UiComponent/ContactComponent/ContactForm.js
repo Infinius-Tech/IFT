@@ -109,7 +109,7 @@ const [formData, setFormData] = useState({
             >
               {/* Contact Information */}
               <div className="mb-8">
-                <h3 className="text-2xl font-semibold text-amber-800 mb-4 pb-8">Contact Information</h3>
+                <h3 className="text-2xl font-semibold text-amber-800 mb-4 pb-8">Get a quote from us today!</h3>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <TextInput
