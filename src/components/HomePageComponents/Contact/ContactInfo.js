@@ -13,43 +13,6 @@ export default function ContactInfo() {
       [e.target.name]: e.target.value,
     });
   };
-  // const [formData, setFormData] = useState({
-  //   name: "",
-  //   businessName: "",
-  //   email: "",
-  //   mobile: "",
-  //   message: "",
-  // });
-
-
-  // const handleInputChange = (e) => {
-  //   console.log("input changesss", e);
-
-  //   const { name, value } = e.target;
-
-  //   // Apply regex validation based on field type
-  //   let errorMessage = '';
-
-  //   setFormData(prev => ({
-  //     ...prev,
-  //     [name]: value
-  //   }));
-
-  //   // Clear error when field is edited and valid
-  //   if (errors[name]) {
-  //     setErrors(prev => ({
-  //       ...prev,
-  //       [name]: ''
-  //     }));
-  //   }
-  // };
-
-  // const [errors, setErrors] = useState({
-  //   name: '',
-  //   businessName: '',
-  //   email: '',
-  //   mobile: '',
-  // });
 
   return (
     <section className="py-20 bg-gradient-to-br from-amber-50 via-white to-amber-100">
@@ -130,7 +93,6 @@ export default function ContactInfo() {
         </div>
       </div>
 
-      {/* ------------------------------- */}
       {/* Add global styles for autofill in browsers that don't support the autofill: selector */}
       <style jsx global>{`
         input:-webkit-autofill,
