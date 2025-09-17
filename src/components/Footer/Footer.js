@@ -7,7 +7,6 @@ const navLinks = [
   { id: 1, title: 'About Us', path: "/aboutUs" },
   { id: 2, title: 'Products', path: "/products" },
   { id: 3, title: 'Private Label', path: "/private-label" },
-  // { id: 4, title: 'Certificate', path: "/certificate" },
   { id: 4, title: 'Contact Us', path: "/contact" },
 ];
 

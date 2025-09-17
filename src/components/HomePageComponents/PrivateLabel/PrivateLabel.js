@@ -95,6 +95,6 @@ export default function PrivateLabelPage() {
           </div>
         </div>
     )}
-      </div>
-      );
-    }
+    </div>
+    );
+  }
