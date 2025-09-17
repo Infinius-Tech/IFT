@@ -2,14 +2,14 @@ import Certificate from '@/components/HomePageComponents/Certificate/Certificate
 import React from "react";
 
 export const metadata = {
-  title: 'Certificate | Indian Food Tech',
-  description: 'Explore our certificate to see the premium quality of our peanut butter products and the various applications they can be used for.',
+  title: 'Certificate | Indian FoodTech',
+  description: 'View our official certifications that validate the quality and safety standards of our peanut butter products. Our certificates demonstrate compliance with food safety regulations and commitment to excellence.',
 };
 
-const CertificateyPage = () => (
+const CertificatePage = () => (
   <>
     <Certificate/>
   </>
 );
 
-export default CertificateyPage;
+export default CertificatePage;
