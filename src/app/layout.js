@@ -28,11 +28,15 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <div className="z-[9998] w-full fixed">
           <Header />
-          {children}
+        </div>
+          <div className="pt-[101px] w-full">
+            {children}
+          </div>
           <Footer />
           <WhatsAppButton />
-          <ContactModal firstOpenDelay={20000} reopenDelay={300000} />
+          <ContactModal firstOpenDelay={20000} reopenDelay={80000}/>
            <SpeedInsights />
       </body>
     </html>

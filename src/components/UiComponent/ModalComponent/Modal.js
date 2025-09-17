@@ -18,7 +18,7 @@ export default function Modal({ children, closeModal, headerText }) {
           </button>
         </div>
 
-        <div className="p-6">
+        <div className="p-0 sm:p-6">
           {children}
         </div>
       </div>

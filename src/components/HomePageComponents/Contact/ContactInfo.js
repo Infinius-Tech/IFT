@@ -91,6 +91,7 @@ export default function ContactInfo() {
           </div>
 
           {/* Right Side - Form */}
+          
          <ContactForm />
         </div>
       </div>
@@ -106,6 +107,5 @@ export default function ContactInfo() {
         }
       `}</style>
     </section>
-    
   );
  }

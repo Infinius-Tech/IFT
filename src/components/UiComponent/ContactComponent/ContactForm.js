@@ -102,16 +102,16 @@ const [formData, setFormData] = useState({
 
 
   return (
- <div>
+          <div>
             <form
               onSubmit={handleSubmit}
               className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition"
             >
               {/* Contact Information */}
               <div className="mb-8">
-                <h3 className="text-2xl font-semibold text-amber-800 mb-4 pb-8">Get a quote from us today!</h3>
+                <h3 className="text-xl sm:text-2xl font-semibold text-amber-800 mb-4 pb-0 sm:pb-8">Get a quote from us today!</h3>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-6">
                   <TextInput
                     label="Name"
                     name="name"
@@ -156,16 +156,16 @@ const [formData, setFormData] = useState({
 
               {/* Message */}
               <div className="mb-8">
-                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="message">
-                  Message
-                </label>
+                 <label className="block text-[#8B4513] mb-1 font-medium text-sm sm:text-md" htmlFor="message">
+                    Message
+                  </label>
                 <textarea
                   id="message"
                   name="message"
                   rows="4"
                   value={formData.message}
                   onChange={handleInputChange}
-                  className="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-amber-500"
+                  className="shadow appearance-none border text-sm sm:text-md rounded w-full py-3 px-4 text-[#8B4513] leading-tight focus:outline-none focus:ring-2 focus:ring-amber-500"
                 ></textarea>
               </div>
 

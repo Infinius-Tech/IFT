@@ -9,9 +9,9 @@ export default function About({ isHomePage }) {
   // ✅ Image list for scrolling
   const images = [
     "/images/aboutUs/factory_image.png",
-    "/images/aboutUs/all.png",
-    "/images/aboutUs/kitchen.png",
-    "/images/aboutUs/out_story.png",
+    // "/images/aboutUs/all.png",
+    // "/images/aboutUs/kitchen.png",
+    // "/images/aboutUs/out_story.png",
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -28,13 +28,13 @@ export default function About({ isHomePage }) {
     <section id="about" className="py-16 bg-amber-50">
       <div className="container mx-auto px-4 max-w-6xl">
         {/* Title */}
-        <h2 className="text-4xl md:text-5xl font-bold text-center text-[#8B4513] mb-12 font-serif">
+        <h2 className="text-4xl md:text-5xl font-bold text-center text-[#8B4513] mb-12 f">
           About Us
         </h2>
 
         <div className="flex flex-col lg:flex-row items-center gap-10">
           {/* 🔄 Auto-scrolling image container */}
-          <div className="lg:w-1/2 shadow-lg border-2 rounded-2xl overflow-hidden relative h-[400px]">
+          <div className="lg:w-1/2 shadow-lg border-2 rounded-2xl overflow-hidden relative h-[400px] w-full">
             <Image
               src={images[currentIndex]}
               alt={`About image ${currentIndex + 1}`}
@@ -45,7 +45,7 @@ export default function About({ isHomePage }) {
 
           {/* ✅ Text content */}
           <div className="lg:w-1/2 text-black flex flex-col justify-center">
-            <h3 className="text-2xl md:text-3xl font-semibold text-[#6B8E23] mb-6 font-serif">
+            <h3 className="text-2xl md:text-3xl font-semibold text-[#6B8E23] mb-6 font-">
               Our Story
             </h3>
             <p>
@@ -92,7 +92,7 @@ export default function About({ isHomePage }) {
         {/* Keep your existing WHY CHOOSE section */}
         {!isHomePage && (
           <div className="mt-16">
-            <h3 className="text-3xl md:text-4xl font-bold text-[#8B4513] mb-8 text-center font-serif">
+            <h3 className="text-3xl md:text-4xl font-bold text-[#8B4513] mb-8 text-center">
               Why Choose Indian Foodtech?
             </h3>
 

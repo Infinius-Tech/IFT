@@ -9,8 +9,8 @@ import Statistics from '@/components/HomePageComponents/Statistics/Statistics';
 import React from 'react'
 
 export const metadata = {
-  title: 'Home | Penaut Butter',
-  description: '',
+  title: 'Home | Indian FoodTech',
+  description: 'Welcome to Indian FoodTech – your trusted source for premium peanut butter products. Explore our innovative flavors, custom formulations, and private label solutions crafted with quality ingredients to deliver taste, nutrition, and excellence worldwide.',
 };
 
 const HomePage = () => (
