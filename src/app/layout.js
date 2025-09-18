@@ -25,19 +25,43 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        {/* <!-- Primary Meta Tags --> */}
+        <title>Indian Foodtech | Private Label Peanut Butter Manufacturer in India</title>
+        <meta name="title" content="Indian Foodtech | Private Label Peanut Butter Manufacturer in India" />
+        <meta name="description" content="Indian Foodtech is a trusted private label peanut butter manufacturer in India, offering premium nut butters, customized recipes, bulk supply, and export-ready solutions." />
+
+        {/* <!-- Open Graph / Facebook --> */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.indianfoodtech.com/" />
+        <meta property="og:title" content="Indian Foodtech | Private Label Peanut Butter Manufacturer in India" />
+        <meta property="og:description" content="Premium-quality private label peanut butter & nut butters from India. Customized recipes, bulk supply, FSSAI certified, APEDA aligned, export-ready." />
+        <meta property="og:image" content="https://www.indianfoodtech.com/images/peanut-butter-banner.jpg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:site_name" content="Indian Foodtech" />
+
+        {/* <!-- Twitter --> */}
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://www.indianfoodtech.com/" />
+        <meta property="twitter:title" content="Indian Foodtech | Private Label Peanut Butter Manufacturer in India" />
+        <meta property="twitter:description" content="Build your food brand with Indian Foodtech — premium-quality private label peanut butter, nut butters, bulk supply & export-ready solutions." />
+        <meta property="twitter:image" content="https://www.indianfoodtech.com/images/peanut-butter-banner.jpg" />
+      </head>
+      
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <div className="z-[9998] w-full fixed">
           <Header />
         </div>
-          <div className="pt-[101px] w-full">
-            {children}
-          </div>
-          <Footer />
-          <WhatsAppButton />
-          <ContactModal firstOpenDelay={20000} reopenDelay={80000}/>
-           <SpeedInsights />
+        <div className="pt-[101px] w-full">
+          {children}
+        </div>
+        <Footer />
+        <WhatsAppButton />
+        <ContactModal firstOpenDelay={20000} reopenDelay={80000} />
+        <SpeedInsights />
       </body>
     </html>
   );

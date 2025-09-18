@@ -3,7 +3,7 @@ import { useState } from "react";
 import TextInput from '../FormComponents/TextInput';
 import MobileInput from "../FormComponents/MobileInput";
 
-export default function ContactForm() {
+export default function ContactForm({isShadow}) {
 const [formData, setFormData] = useState({
     name: "",
     businessName: "",
@@ -100,18 +100,19 @@ const [formData, setFormData] = useState({
     }
   };
 
-
   return (
+
           <div>
             <form
               onSubmit={handleSubmit}
-              className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition"
+              className={`bg-white p-6  transition ${isShadow ? 'rounded-2xl shadow-lg hover:shadow-2xl' : ''}`}
             >
-              {/* Contact Information */}
-              <div className="mb-8">
-                <h3 className="text-xl sm:text-2xl font-semibold text-amber-800 mb-4 pb-0 sm:pb-8">Get a quote from us today!</h3>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-6">
+              {/* Contact Information */}
+              <div className="mb-2">
+                <h3 className="text-xl sm:text-2xl font-semibold text-amber-800 pb-0 sm:pb-4">Get a quote from us today!</h3>
+
+                <div className="grid gap-3">
                   <TextInput
                     label="Name"
                     name="name"
@@ -152,11 +153,8 @@ const [formData, setFormData] = useState({
                     error={errors.mobile}
                   />
                 </div>
-              </div>
 
-              {/* Message */}
-              <div className="mb-8">
-                 <label className="block text-[#8B4513] mb-1 font-medium text-sm sm:text-md" htmlFor="message">
+                 <label className=" mt-4 block text-[#8B4513] mb-1 font-medium text-sm sm:text-md" htmlFor="message">
                     Message
                   </label>
                 <textarea
@@ -168,6 +166,7 @@ const [formData, setFormData] = useState({
                   className="shadow appearance-none border text-sm sm:text-md rounded w-full py-3 px-4 text-[#8B4513] leading-tight focus:outline-none focus:ring-2 focus:ring-amber-500"
                 ></textarea>
               </div>
+
 
               {/* Submit Button */}
               <div className="flex items-center justify-center">

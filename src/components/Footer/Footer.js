@@ -8,7 +8,7 @@ const navLinks = [
   { id: 2, title: 'Products', path: "/products" },
   { id: 3, title: 'Private Label', path: "/private-label" },
   { id: 4, title: 'Contact Us', path: "/contact" },
-  { id: 5, title: 'Gallery', path: "/gallery" },
+  // { id: 5, title: 'Gallery', path: "/gallery" },
 ];
 
 export default function Footer() {

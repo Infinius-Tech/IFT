@@ -13,7 +13,7 @@ export default function ProductDetails() {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const params = useParams();
-  const { products_id } = params;
+  const {products_id } = params;
 
   useEffect(() => {
     if (products_id) {

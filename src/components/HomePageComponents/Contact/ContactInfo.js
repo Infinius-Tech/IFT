@@ -6,7 +6,7 @@ import { indianFoodTechPhone } from "@/Utils/CommonConst";
 import ContactForm from "@/components/UiComponent/ContactComponent/ContactForm";
 import useScreenSize from "@/customHook/useScreenSize";
 
-export default function ContactInfo() {
+export default function ContactInfo({isShadow}) {
     const { isLargeScreen } = useScreenSize(1024);
 
     const handlePhoneClick = (e) => {
@@ -91,8 +91,7 @@ export default function ContactInfo() {
           </div>
 
           {/* Right Side - Form */}
-          
-         <ContactForm />
+         <ContactForm isShadow={true} />
         </div>
       </div>
 

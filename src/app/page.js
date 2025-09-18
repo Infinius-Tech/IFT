@@ -7,6 +7,7 @@ import Hero from '@/components/HomePageComponents/Hero/Hero';
 import Products from '@/components/HomePageComponents/Product/Products';
 import Statistics from '@/components/HomePageComponents/Statistics/Statistics';
 import React from 'react'
+import Certificate from '@/components/HomePageComponents/Certificate/Certificate';
 
 export const metadata = {
   title: 'Home | Indian FoodTech',
@@ -21,8 +22,9 @@ const HomePage = () => (
     <BrandedPeanutButter />
     <Products header={'Our Products'}/>
     <Benefits />
-    <Gallery />
+    <Certificate />
     <ContactInfo />
+   
   </>
 );
 
