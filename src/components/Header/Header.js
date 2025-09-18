@@ -318,6 +318,7 @@ const navLinks = [
   { id: 4, title: 'PRIVATE LABEL', path: "/private-label" },
   { id: 5, title: 'CONTACT US', path: "/contact" },
   { id: 6, title: 'Sample Request', path: "#sample-request-form", isModal: true, isCta: true },
+  { id: 7, title: 'Gallery', path: "/gallery" },
 ];
 
 // Product dropdown options
