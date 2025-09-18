@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, use } from "react";
 import { X, CheckCircle, Package, Scale, Leaf, Heart } from "lucide-react";
 import { AllProductsList } from "@/Utils/ProductList";
 import Image from "next/image";
@@ -12,7 +12,7 @@ export default function AllProducts() {
     const router = useRouter();
     const searchParams = useSearchParams();
     const productId = searchParams ? searchParams.get("id") : null;
-    
+
     // Refs for category sections
     const peanutButterRef = useRef(null);
     const nutButterRef = useRef(null);
@@ -31,14 +31,17 @@ export default function AllProducts() {
             setIsModalOpen(false);
         }
         
-        // Handle category scrolling based on URL hash
+    }, [productId]);
+
+    useEffect(() => {
+         // Handle category scrolling based on URL hash
         const hash = window.location.hash;
         if (hash) {
             setTimeout(() => {
                 scrollToCategory(hash.substring(1));
             }, 100);
         }
-    }, [productId]);
+    }, [window.location.hash]);
 
     const scrollToCategory = (categoryId) => {
         let ref = null;
@@ -78,30 +81,31 @@ export default function AllProducts() {
     return (
         <section className="py-16 bg-white">
             <div className="container mx-auto px-4">
-                <h2 className="text-3xl md:text-4xl font-bold text-center text-[#8B4513] mb-12">
-                    Our Products
+                <h2 className="text-4xl md:text-5xl font-bold text-center text-[#8B4513] mb-12">
+                               
+                    Products
                 </h2>
 
                 {/* Categories */}
                 {AllProductsList.map((category) => {
+                    
                     // Assign refs based on category name
                     let categoryRef = null;
-                    if (category.categoryName.toLowerCase().includes('peanut butter')) {
+                    if (category.id==1) {
                         categoryRef = peanutButterRef;
-                    } else if (category.categoryName.toLowerCase().includes('nut butter')) {
+                    } else if (category.id==2) {
                         categoryRef = nutButterRef;
-                    } else if (category.categoryName.toLowerCase().includes('roasted peanut')) {
+                    } else if (category.id==3) {
                         categoryRef = roastedPeanutRef;
-                    } else if (category.categoryName.toLowerCase().includes('spred')) {
+                    } else if (category.id==4) {
                         categoryRef = spredRef;
                     }
                     
                     return (
                         <div 
-                            key={category.id} 
-                            id={category.id}
+                            key={category.id}  
                             ref={categoryRef}
-                            className="mb-16 scroll-mt-20"
+                            className="mb-16 pt-16"
                         >
                             <h3 className="text-2xl md:text-3xl font-bold text-[#8B4513] mb-8 pb-2 border-b-2 border-amber-200">
                                 {category.categoryName}
@@ -239,6 +243,9 @@ export default function AllProducts() {
                     </div>
                 )}
             </div>
+                
         </section>
     );
 }
+
+//key={category.id} value={category.id}
