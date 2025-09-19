@@ -41,7 +41,8 @@ export default function Certificate() {
   };
 
   return (
-    <section className={`py-16 bg-gradient-to-b from-amber-50 to-white`}>
+    // <section className={`py-16 bg-gradient-to-b from-amber-50 to-white`}>
+    <section className={`py-16 bg-white`}>
       <div className="container mx-auto px-4">
         <h2 className="text-3xl md:text-4xl font-bold text-center text-[#8B4513] mb-4">
           Our Certifications

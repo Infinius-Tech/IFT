@@ -17,7 +17,8 @@ export default function ContactInfo({isShadow}) {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-br from-amber-50 via-white to-amber-100">
+    // <section className="py-20 bg-gradient-to-br from-amber-50 via-white to-amber-100">
+    <section className="py-20 bg-white">
       <div className="container mx-auto px-6">
         {/* Heading */}
         <div className="text-center mb-14">
