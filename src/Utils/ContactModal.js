@@ -5,7 +5,7 @@ import ContactForm from "@/components/UiComponent/ContactComponent/ContactForm";
 import Image from "next/image";
 
 export default function ContactModal({ firstOpenDelay = 20000, reopenDelay = 80000, }) {
-  const [showContact, setShowContact] = useState(true);
+  const [showContact, setShowContact] = useState(false);
   const [openCount, setOpenCount] = useState(0);
   const [currentIndex, setCurrentIndex] = useState(0);
 

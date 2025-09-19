@@ -168,7 +168,8 @@ export default function About({ isHomePage }) {
     setCurrentIndex((prev) => (prev + 1) % images.length);
 
   return (
-    <section id="about" className="py-16 bg-amber-50">
+    // <section id="about" className="py-16 bg-amber-50">
+    <section id="about" className="py-6 bg-white">
       <div className="container mx-auto px-4 max-w-6xl">
         {/* Title */}
         <h2 className="text-4xl md:text-5xl font-bold text-center text-[#8B4513] mb-12">
