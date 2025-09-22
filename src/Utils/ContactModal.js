@@ -5,7 +5,7 @@ import ContactForm from "@/components/UiComponent/ContactComponent/ContactForm";
 import Image from "next/image";
 
 export default function ContactModal({ firstOpenDelay = 20000, reopenDelay = 80000, }) {
-  const [showContact, setShowContact] = useState(true);
+  const [showContact, setShowContact] = useState(false);
   const [openCount, setOpenCount] = useState(0);
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -42,12 +42,8 @@ export default function ContactModal({ firstOpenDelay = 20000, reopenDelay = 800
       alt: "chocolate peanut butter"
     },
     {
-      url: "/images/privateLabel/crunchy beanut butter.webp",
+      url: "/images/privateLabel/crunchy peanut butter.webp",
       alt: "crunchy peanut butter"
-    },
-    {
-      url: "/images/privateLabel/export peanut butter.webp",
-      alt: "export peanut butter"
     },
     {
       url: "/images/privateLabel/healthy peanut butter.webp",
@@ -66,6 +62,7 @@ export default function ContactModal({ firstOpenDelay = 20000, reopenDelay = 800
       alt: "private label peanut butter"
     },
   ];
+  
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % images.length);

@@ -6,7 +6,6 @@ import WhatsAppButton from "@/components/WhatsAppComponent/WhatsApp";
 import ContactModal from "@/Utils/ContactModal";
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
-
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
