@@ -24,7 +24,8 @@ export default function Benefits() {
   ];
 
   return (
-    <section className="py-16 bg-amber-100">
+    // <section className="py-16 bg-amber-100">
+    <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl md:text-4xl font-bold text-center text-[#8B4513] mb-12">Why Choose Us</h2>
         

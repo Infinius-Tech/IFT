@@ -56,7 +56,8 @@ export default function Statistics() {
   return (
     <section 
       ref={sectionRef}
-      className="py-16 bg-gradient-to-r from-amber-100 to-amber-200 relative overflow-hidden"
+      // className="py-16 bg-gradient-to-r from-amber-100 to-amber-200 relative overflow-hidden"
+      className="py-16 bg-white relative overflow-hidden"
     >
       {/* Background pattern */}
       <div className="absolute inset-0 opacity-10">

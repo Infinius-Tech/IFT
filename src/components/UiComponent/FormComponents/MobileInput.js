@@ -1,4 +1,5 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';    
+import {countries} from '@/Utils/CountryList';
 
 // Country code data
 const countryCodes = [
@@ -55,6 +56,9 @@ const countryCodes = [
   { code: '+27', name: 'South Africa', flag: '🇿🇦' },
 ];
 
+console.log(countries);
+
+
 export default function MobileInput({
   label,
   name,
@@ -62,7 +66,7 @@ export default function MobileInput({
   onChange,
   error,
   placeholder = "Enter mobile number",
-  defaultCountryCode = '+1'
+  defaultCountryCode = '91'
 }) {
   const [selectedCountryCode, setSelectedCountryCode] = useState(defaultCountryCode);
   const [mobileNumber, setMobileNumber] = useState(value || '');
@@ -96,10 +100,10 @@ export default function MobileInput({
     onChange({ target: { name, value: countryCode + '-' + mobileNumber } });
   };
 
-  const selectedCountry = countryCodes.find(c => c.code === selectedCountryCode);
+  const selectedCountry = countries.find(c => c.code === selectedCountryCode);
 
   // Filter countries by search term
-  const filteredCountries = countryCodes.filter(
+  const filteredCountries = countries.filter(
     c => c.name.toLowerCase().includes(searchTerm.toLowerCase()) || c.code.includes(searchTerm)
   );
 
@@ -118,7 +122,7 @@ export default function MobileInput({
             className="h-full px-3 py-3 border-[1px] border-r-0 border-[#8B4513] rounded-l-xl focus:outline-none flex items-center "
           >
             <span className="text-sm font-medium text-[#8B4513]">
-              {selectedCountryCode}
+              +{selectedCountryCode}
               {/* {selectedCountry?.flag} */}
             </span>
             <svg
@@ -146,13 +150,13 @@ export default function MobileInput({
               <div className="py-1 max-h-48 overflow-y-auto">
                 {filteredCountries.map(country => (
                   <button
-                    key={country.code}
+                    key={country.phonecode}
                     type="button"
                     className={`w-full text-left px-4 py-2 hover:bg-amber-50 focus:bg-amber-50 focus:outline-none text-sm ${selectedCountryCode === country.code ? 'bg-amber-100 text-[#8B4513]' : 'text-gray-900'}`}
                     onClick={() => handleCountryCodeChange(country.code)}
                   >
                     {/* <span className="mr-2">{country.flag}</span> */}
-                    <span className="font-medium">{country.code}</span>
+                    <span className="font-medium">+{country.code}</span>
                     <span className="text-gray-600 ml-2">{country.name}</span>
                   </button>
                 ))}

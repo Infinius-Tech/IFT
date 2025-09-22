@@ -4,7 +4,8 @@ import { CheckCircle, Factory, Package, Globe, Calendar } from 'lucide-react';
 
 export default function BrandedPeanutButter() {
   return (
-    <section className="py-16 bg-gradient-to-br from-amber-50 to-amber-100">
+    // <section className="py-16 bg-gradient-to-br from-amber-50 to-amber-100">
+    <section className="py-16 bg-white">
       <div className="container mx-auto px-4 md:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Column - Content */}
